@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private HealthSystem health;
+
+    private void Awake()
     {
-        
+        health = GetComponent<HealthSystem>(); 
+    } 
+    
+    public void TakeDamage(float amount)
+    {
+        health?.GetDamage(amount);
     }
 }
