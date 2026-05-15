@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IDamageable
 {
-    [SerializeField]private float maxHealth;
-    [SerializeField]private UnityEvent onDeath;
+    public event Action OnDeath;
+    
     private float currentHealth;
-    public void GetDamage(float damage)
+    
+    public void Initialize(float maxHealth)=> currentHealth = maxHealth;
+    
+    
+    public void TakeDamage(float damage)
     {
-        if (currentHealth <= 0)
+        if (currentHealth - damage <= 0)
         {
-            Die();
+            OnDeath?.Invoke();
         }
         else
         {
@@ -18,9 +23,5 @@ public class HealthSystem : MonoBehaviour
             Debug.Log($"{gameObject.name} recibió daño, su vida actual es: {currentHealth}");
         }
     }
-
-    private void Die()
-    {
-        onDeath.Invoke();
-    }
+    
 }
