@@ -1,16 +1,34 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovement : MonoBehaviour, IMovable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float speed = 5f;
+
+    private Rigidbody2D _rb;
+
+    private void Awake()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        var kb = Keyboard.current;
+        if (kb == null) return;
+
+        Vector2 dir = Vector2.zero;
+        if (kb.wKey.isPressed) dir.y += 1f;
+        if (kb.sKey.isPressed) dir.y -= 1f;
+        if (kb.aKey.isPressed) dir.x -= 1f;
+        if (kb.dKey.isPressed) dir.x += 1f;
+
+        Move(dir.normalized);
+    }
+
+    public void Move(Vector2 direction)
+    {
+        _rb.linearVelocity = direction * speed;
     }
 }
