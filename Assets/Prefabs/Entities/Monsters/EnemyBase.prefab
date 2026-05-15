@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1896521871531587376}
   - component: {fileID: 4884453890565740117}
   - component: {fileID: 3445025438012700594}
+  - component: {fileID: -729392722876223534}
+  - component: {fileID: -308627751424584648}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -138,3 +140,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &-729392722876223534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341526079053605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725fce22eab0cc543b7be22f89a2d007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterHealth
+--- !u!114 &-308627751424584648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341526079053605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686b1ce4310bfc040a9b369518163f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterMovement
