@@ -4,9 +4,12 @@ public class MonsterInitializer : MonoBehaviour
 {
     [SerializeField]private MonstersData monsterData;
 
-    private void Awake()
+    [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] private MonsterMovementSystem movementSystem;
+    
+    private void Start()
     {
-        GetComponent<HealthSystem>().Initialize(monsterData.MaxHealth);
-        GetComponent<MonsterMovementSystem>().Initialize(monsterData.Speed);
+        healthSystem.Initialize(monsterData.MaxHealth);
+        movementSystem.Initialize(monsterData.Speed);
     }
 }

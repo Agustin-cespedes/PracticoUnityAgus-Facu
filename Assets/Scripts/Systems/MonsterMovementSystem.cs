@@ -2,20 +2,26 @@ using UnityEngine;
 using System.Collections;
 public class MonsterMovementSystem : MonoBehaviour
 {
-    private float speed;
+    private float _speed;
     private Coroutine followRoutine;
     private HealthSystem health;
     [SerializeField] private Transform target;
     
-    public void Initialize(float Speed)=> Speed = speed;
+    public void Initialize(float Speed)=> _speed = Speed;
     
-    void Awake()
+    private void Awake()
     {
         health = GetComponent<HealthSystem>();
     }
 
+    private void Start()
+    {
+        StartFollow();
+    }
+
     private void OnEnable()
     { 
+        
         health.OnDeath += StopFollow;
     }
 
@@ -39,7 +45,7 @@ public class MonsterMovementSystem : MonoBehaviour
         while (true)
         {
             Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
-            transform.position += (Vector3)(direction * speed * Time.deltaTime);
+            transform.position += (Vector3)(direction * _speed * Time.deltaTime);
             yield return null;
         }
     }

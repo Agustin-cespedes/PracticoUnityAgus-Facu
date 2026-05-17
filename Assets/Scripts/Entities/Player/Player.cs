@@ -1,17 +1,8 @@
+using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour
 {
 
-    private HealthSystem health;
-
-    private void Awake()
-    {
-        health = GetComponent<HealthSystem>(); 
-    } 
     
-    public void TakeDamage(float amount)
-    {
-   
-    }
 }
